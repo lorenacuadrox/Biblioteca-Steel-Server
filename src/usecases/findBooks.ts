@@ -8,6 +8,7 @@ export async function listBook() {
         FOR book IN books
             RETURN MERGE(book, {
                 author: DOCUMENT("authors", book.author),
+                editorial: DOCUMENT("editorials", book.editorial),
             })
     `
     const results = await database.query(query)
